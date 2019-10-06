@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.mytaotao.parent</groupId>
+		<artifactId>mytaotao-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.mytaotao.manage</groupId>
+	<artifactId>mytaotao-manage</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>mytaotao-manage-pojo</module>
+		<module>mytaotao-manage-service</module>
+		<module>mytaotao-manage-web</module>
+		<module>mytaotao-manage-mapper</module>
+	</modules>
+
+
+	<dependencies>
+		<!-- 单元测试 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Apache工具组件 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<!--log4j扫描包  -->
+		<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+			</dependency>
+			<!-- 分页助手 -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jsqlparser</groupId>
+				<artifactId>jsqlparser</artifactId>
+			</dependency>
+				
+			<!-- 通用Mapper -->
+			<dependency>
+				<groupId>com.github.abel533</groupId>
+				<artifactId>mapper</artifactId>
+				<version>2.3.4</version>
+				
+				<!--排除jpa依赖  -->
+				<exclusions>
+					<exclusion>
+						<groupId>javax.persistence</groupId>
+						<artifactId>persistence-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- 配置Tomcat插件 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>8070</port>
+					<path>/</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
